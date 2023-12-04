@@ -71,7 +71,7 @@ class FeesManagementSystem {
 
 public class FeesManagementApp {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         FeesManagementSystem system = new FeesManagementSystem();
 
         while (true) {
@@ -82,31 +82,31 @@ public class FeesManagementApp {
             System.out.println("4. Exit\n");
             System.out.print("Enter your choice: ");
 
-            int choice = scanner.nextInt();
-            scanner.nextLine(); 
+            int choice = sc.nextInt();
+            sc.nextLine(); 
 
             switch (choice) {
                 case 1:
                     System.out.print("\nEnter Student ID: ");
-                    int id = scanner.nextInt();
-                    scanner.nextLine(); 
+                    int id = sc.nextInt();
+                    sc.nextLine(); 
                     System.out.print("Enter Student Name: ");
-                    String name = scanner.nextLine();
+                    String name = sc.nextLine();
                     System.out.print("Enter Total Fees Paid: ");
-                    double totalFeesPaid = scanner.nextDouble();
+                    double totalFeesPaid = sc.nextDouble();
                     System.out.print("Enter Total Fees Due: ");
-                    double totalFeesDue = scanner.nextDouble();
+                    double totalFeesDue = sc.nextDouble();
                     Student student = new Student(id, name, totalFeesPaid, totalFeesDue);
                     system.addStudent(student);
                     System.out.println("Student added successfully.\n");
                     break;
                 case 2:
                     System.out.print("Enter Student ID for payment: ");
-                    int paymentId = scanner.nextInt();
+                    int paymentId = sc.nextInt();
                     Student paymentStudent = system.findStudentById(paymentId);
                     if (paymentStudent != null) {
                         System.out.print("Enter Payment Amount: ");
-                        double paymentAmount = scanner.nextDouble();
+                        double paymentAmount = sc.nextDouble();
                         paymentStudent.makePayment(paymentAmount);
                     } else {
                         System.out.println("Student not found.\n");
@@ -114,7 +114,7 @@ public class FeesManagementApp {
                     break;
                 case 3:
                     System.out.print("Enter Student ID to view details: ");
-                    int viewId = scanner.nextInt();
+                    int viewId = sc.nextInt();
                     Student viewStudent = system.findStudentById(viewId);
                     if (viewStudent != null) {
                         System.out.println(viewStudent);
@@ -124,7 +124,7 @@ public class FeesManagementApp {
                     break;
                 case 4:
                     System.out.println("\nExiting the program. Goodbye!");
-                    scanner.close();
+                    sc.close();
                     System.exit(0);
                 default:
                     System.out.println("\nInvalid choice. Please try again.");
